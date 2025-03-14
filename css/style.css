@@ -33,31 +33,27 @@ corpo
 main{
     padding: 30px 0;
     background-image: url('../img/cork.png');
+    
 }
 
 main .container{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: row;
+    gap: 20px;
 }
 
 main .container .box{
-    width: 640px;
-    display: flex;
-    padding-top: 20px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 400px;
+    padding: 20px;
     background-color: #FFFFFF;
     position: relative;
-    margin-top: 20px;
 }
 
 
 main .container .box .img-container{
-    width: 600px;
-    height: 600px;
+    height: 380px;
     background-color: green;
 }
 
@@ -75,5 +71,5 @@ main .container .box .pin{
     position: absolute;
     top: -10px;
     left: 50%;
-    transition: 0 -0.5;
+    transform: translate(-50%, 0);
 }
