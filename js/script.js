@@ -28,7 +28,8 @@ axios.get(api)
             })
         });
 
-        function openOverlay(res) {  
+        function openOverlay(res) {
+            overlayElement.classList.remove("d-none"); 
             overlayElement.innerHTML = `
                 <div class="opacity-overlay"></div>    
                 <div class="overlay">
@@ -46,8 +47,8 @@ axios.get(api)
         }
 
         function closeOverlay() {
-            overlayElement.innerHTML = '';
-
+            // overlayElement.innerHTML = '';
+            overlayElement.classList.add("d-none"); 
             document.querySelector('body').classList.remove("black-body");
             document.querySelector('body').classList.add("bg-body");
         }
