@@ -1,40 +1,56 @@
 let cardContainer = document.querySelector('.container');
 let api = 'https://lanciweb.github.io/demo/api/pictures/';
-
-let btnClose = document.querySelector('.button-close');
-let overlay = document.querySelector('.overlay');
-
+let overlayElement = document.querySelector('.overlay-container');
 axios.get(api)
     .then(response => {
         const result = response.data;
         console.log(result);
 
-        for (let i = 0; i < result.length; i++) {
-            console.log(result[i]);
-            cardContainer.innerHTML += `
-            <div class="box">
-                <div class="img-container">
-                    <img src="${result[i]['url']}" alt="${result[i]['title']}">
-                </div>
-                <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, cupiditate!</p>
-                <img src="img/pin.svg" alt="pin" class="pin">
-            </div>`;
+        result.forEach((res, i) => {
 
+            let card = document.createElement('div');
+            card.classList.add('box', 'text-center');
+            card.innerHTML = `
+                        <div class="img-container">
+                            <img src="${result[i]['url']}" alt="${result[i]['title']}">
+                        </div>
+                        <div class="mt-2">
+                            <span class="description text-secondary">${result[i]['date']}</span><br>
+                        <span class="description">${result[i]['title']}</span>
+                        </div>
+                        <img src="img/pin.svg" alt="pin" class="pin">`;
+            cardContainer.appendChild(card);
+
+            card.addEventListener('click', () => {
+                console.log('indice:', i);
+                console.log('nome', res.title);
+                openOverlay(res);
+            })
+        });
+
+        function openOverlay(res) {
+
+            overlayElement.innerHTML = `
+                <div class="opacity-overlay"></div>    
+                <div class="overlay">
+                    <button class="button-close">click close</button>
+                    <div class="img-container-overlay">
+                        <img src="${res['url']}" alt="${res['title']}">
+                    </div>
+                </div>`;
+
+            document.querySelector('body').className = "black-body";
+
+            let btnClose = document.querySelector('.button-close');
+            btnClose.addEventListener('click', closeOverlay);
+            
         }
-        // <div class="box">
-        //     <div class="img-container">
-        //         <img src="" alt="foto">
-        //     </div>
-        //     <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, cupiditate!</p>
-        //     <img src="img/pin.svg" alt="pin" class="pin">
-        // </div>
-
-
-        btnClose.addEventListener('click', closeOverlay);
 
         function closeOverlay() {
-            overlay.classList.remove("yes-display");
-            overlay.classList.add("no-display");
+            overlayElement.innerHTML = '';
+
+            document.querySelector('body').classList.remove("black-body");
+            document.querySelector('body').classList.add("bg-body");
         }
 
     })
