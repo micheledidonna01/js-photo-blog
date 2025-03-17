@@ -28,8 +28,7 @@ axios.get(api)
             })
         });
 
-        function openOverlay(res) {
-
+        function openOverlay(res) {  
             overlayElement.innerHTML = `
                 <div class="opacity-overlay"></div>    
                 <div class="overlay">
