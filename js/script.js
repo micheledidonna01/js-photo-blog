@@ -26,7 +26,18 @@ axios.get(api)
                 console.log('nome', res.title);
                 openOverlay(res);
             })
+
+            pin = document.querySelectorAll('.pin');
+
+            card.addEventListener('mouseover', () => {
+                pin[i].classList.add("d-none");
+            });
+
+            card.addEventListener('mouseleave', () => {
+                pin[i].classList.remove("d-none");
+            });
         });
+
 
         function openOverlay(res) {
             overlayElement.classList.remove("d-none"); 

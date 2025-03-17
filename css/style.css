@@ -67,8 +67,13 @@ main .container .box{
     padding: 20px;
     background-color: #FFFFFF;
     position: relative;
+    box-shadow: 1px 1px 1px gray;
 }
 
+main .container .box:hover{
+    transform: rotate(10deg);
+    box-shadow: 2px 3px 5px gray;
+}
 
 main .container .box .img-container{
     background-color: green;
