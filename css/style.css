@@ -89,7 +89,48 @@ main .container .box .pin{
     transform: translate(-50%, 0);
 }
 
+.overlay{
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    top:0;
+    bottom:0;
+    right: 0;
+    left: 0;
+    opacity: 0.8; 
+    text-align: center;
+}
 
+.overlay .button-close{
+    margin: 100px auto 20px;
+    padding: 10px;
+    background-color: #FFFFFF;
+    opacity: 1;
+}
+
+.overlay .button-close:hover{
+    background-color: #a96d12;
+}
+.overlay .img-container-overlay{
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+}
+
+.overlay .img-container-overlay img{
+    width: 100%;
+    height: 100%;
+}
+
+.no-display{
+    display: none;
+}
+
+.yes-display{
+    display: block;
+}
 /* TABLET */
 @media screen and (max-width : 768px) {
 
